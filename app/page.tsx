@@ -1,19 +1,38 @@
-import { Button } from "@/components/ui/button"
 
-export default function Page() {
+import Navbar from "@/components/home/Navbar";
+import Banner from "@/components/home/Banner";
+import Statistics from "@/components/home/Statistics";
+
+export default function Home() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#050506] text-white">
+
+      {/* Globe background */}
+      <div
+        className="absolute inset-0 -z-20 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/hero-globe.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center bottom",
+        }}
+      />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#202022]/90 via-transparent to-black/20" />
+
+      {/* Purple glow */}
+      <div className="pointer-events-none absolute bottom-[5%] left-1/2 -z-10 h-[350px] w-[80%] -translate-x-1/2 rounded-full bg-[#5145ff]/15 blur-[120px]" />
+
+      {/* Main content */}
+      <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col px-4 pb-8 pt-5 sm:px-6 lg:px-10">
+
+        <Navbar />
+
+        <Banner />
+
+        <Statistics />
+
       </div>
-    </div>
-  )
+    </main>
+  );
 }
