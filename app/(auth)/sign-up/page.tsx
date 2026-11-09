@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 
-type UserRole = "Seeker" | "Recruiter" | "Admin";
+type UserRole = "seeker" | "recruiter" | "admin";
 
 const roleOptions: {
   id: UserRole;
@@ -28,19 +28,19 @@ const roleOptions: {
   icon: typeof Briefcase;
 }[] = [
   {
-    id: "Seeker",
+    id: "seeker",
     label: "Seeker",
     description: "Looking for jobs",
     icon: Briefcase,
   },
   {
-    id: "Recruiter",
+    id: "recruiter",
     label: "Recruiter",
     description: "Hiring talent",
     icon: Building2,
   },
   {
-    id: "Admin",
+    id: "admin",
     label: "Admin",
     description: "Platform admin",
     icon: ShieldCheck,
@@ -50,7 +50,7 @@ const roleOptions: {
 export default function SignUpPage() {
   const router = useRouter();
 
-  const [role, setRole] = useState<UserRole>("Seeker");
+  const [role, setRole] = useState<UserRole>("seeker");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
