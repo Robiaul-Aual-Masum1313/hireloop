@@ -20,6 +20,7 @@ import {
   CheckCircle2,
   Check,
 } from "lucide-react";
+import { createJob } from "@/lib/actions/jobs";
 
 // ============================================================================
 // Custom Select Component:
@@ -329,6 +330,21 @@ function CustomDatePicker({
 // ============================================================================
 // Main Add New Job Page
 // ============================================================================
+
+export interface IjobFromData {
+    jobTitle: string,
+    companyName: string,
+    jobCategory: string,
+    jobType: string,
+    isRemote: boolean,
+    location: string,
+    deadline: string,
+    minSalary: string,
+    maxSalary: string,
+    frequency: string,
+    responsibilities: string,
+    requirements: string,
+  }
 export default function AddNewJobPage() {
   // 1. Beginner-friendly state object to collect all form fields
   const [formData, setFormData] = useState({
@@ -377,9 +393,12 @@ export default function AddNewJobPage() {
   };
 
   // 5. Submit handler to collect the final data
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("=== Submitted Job Data ===", formData);
+    const result = await createJob(formData)
+    console.log(result);
+    
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
